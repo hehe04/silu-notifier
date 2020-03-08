@@ -5,8 +5,10 @@ import (
 	"time"
 )
 
-var Cache *cache.Cache
+var DeviceCache *cache.Cache
+var EventCache *cache.Cache
 
 func init() {
-	Cache = cache.New(time.Second*5, time.Second*10)
+	DeviceCache = cache.New(time.Second*5, time.Second*10)
+	EventCache=cache.New(0,0) //not expired
 }

@@ -8,9 +8,11 @@ import (
 
 func main() {
 	r := gin.Default()
-	r.Static("/resource", "./resource")
-	r.POST("/register", handler.Register)
+	r.Static("/resource", handler.BasePath)
+	r.POST("/sub", handler.Subscribe)
 	r.GET("/devices", handler.Devices)
+	r.POST("/pub", handler.Publishe)
+	r.POST("/upload", handler.Upload)
 	if err := r.Run(":8000"); err != nil {
 		log.Fatal(err)
 	}
