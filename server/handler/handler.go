@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
+	"os"
 	"path/filepath"
 	"silu-notifier/server/entity"
 	"time"
@@ -137,6 +138,10 @@ func Upload(c *gin.Context) {
 		c.JSON(500, &resp)
 		c.Error(err)
 		return
+	}
+	err = os.Chmod(p, 0666)
+	if err != nil {
+		c.Error(err)
 	}
 	resp.Status = http.StatusText(200)
 	resp.Message = "Uploaded"
