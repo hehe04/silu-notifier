@@ -15,10 +15,10 @@ type Device struct {
 	DevUUID   string    `json:"dev_uuid" binding:"required"`
 	Describe  string    `json:"describe"`
 	//NotifyURL string    `json:"notify_url" binding:"required"`
-	BluetoothID string `json:"bluetooth_id" binding: "required"`
+	BluetoothID string `json:"bluetooth_id" binding:"required"`
 	CreatedOn time.Time `json:"created_on"`
-	Expired   time.Time
-	Type      uint `json:"type"`
+	//Expired   bool
+	Type      uint `json:"type" binding:"required"`
 }
 
 type Response struct {
@@ -38,7 +38,7 @@ type ResponseEvent struct {
 }
 
 type Event struct {
-	From string `json:"from"`
-	To string `json:"to"`
-	Data []string `json:"data"`
+	From string `json:"from" binding:"required"`
+	To string `json:"to" binding:"required"`
+	Data []string `json:"data" binding:"required"`
 }
