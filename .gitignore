@@ -16,3 +16,4 @@ resource/
 .idea/
 logs/
 .DS_Store
+build/
