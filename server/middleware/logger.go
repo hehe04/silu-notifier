@@ -5,9 +5,8 @@ import (
 	rotatelogs "github.com/lestrrat-go/file-rotatelogs"
 	"github.com/rifflock/lfshook"
 	"github.com/sirupsen/logrus"
-	"log"
-	"path"
 	"path/filepath"
+	"silu-notifier/server/config"
 	"time"
 )
 
@@ -18,10 +17,8 @@ func LoggerToFile() gin.HandlerFunc {
 	logFileName := "access.log"
 
 	// 日志文件
-	fileName, err := filepath.Abs(path.Join(logFilePath, logFileName))
-	if err != nil {
-		log.Fatal(err)
-	}
+	fileName := filepath.Join(config.HomePath, logFilePath, logFileName)
+
 	// 写入文件
 	/*src, err := os.OpenFile(fileName, os.O_APPEND|os.O_WRONLY, os.ModeAppend)
 	if err != nil {
@@ -38,7 +35,7 @@ func LoggerToFile() gin.HandlerFunc {
 	logger.SetLevel(logrus.DebugLevel)
 
 	// 设置 rotatelogs
-	logWriter, err := rotatelogs.New(
+	logWriter, _ := rotatelogs.New(
 		// 分割后的文件名称
 		fileName+".%Y%m%d",
 

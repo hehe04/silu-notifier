@@ -7,6 +7,7 @@ require (
 	github.com/gin-gonic/gin v1.5.0
 	github.com/jehiah/go-strftime v0.0.0-20171201141054-1d33003b3869 // indirect
 	github.com/jonboulle/clockwork v0.1.0 // indirect
+	github.com/kardianos/service v1.0.0
 	github.com/lestrrat-go/file-rotatelogs v2.3.0+incompatible
 	github.com/lestrrat-go/strftime v1.0.1 // indirect
 	github.com/patrickmn/go-cache v2.1.0+incompatible

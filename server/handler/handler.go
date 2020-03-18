@@ -6,18 +6,12 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path"
 	"path/filepath"
+	"silu-notifier/server/config"
 	"silu-notifier/server/entity"
 	"time"
 )
-
-var (
-	BasePath string = "./resource"
-)
-
-func init() {
-	MkDirAll(BasePath)
-}
 
 // Subscribe the device on server
 func Subscribe(c *gin.Context) {
@@ -128,7 +122,7 @@ func Upload(c *gin.Context) {
 		c.JSON(500, &resp)
 		return
 	}*/
-	p := filepath.Join(BasePath, file.Filename)
+	p := filepath.Join(config.ResourcePath, file.Filename)
 	// Upload the file to specific dst.
 	err := c.SaveUploadedFile(file, p)
 	if err != nil {
@@ -145,6 +139,7 @@ func Upload(c *gin.Context) {
 	}
 	resp.Status = http.StatusText(200)
 	resp.Message = "Uploaded"
-	resp.Data = []string{p}
+	fileLoc := path.Join("/resource", file.Filename)
+	resp.Data = []string{fileLoc}
 	c.JSON(http.StatusOK, &resp)
 }
