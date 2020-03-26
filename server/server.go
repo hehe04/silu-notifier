@@ -7,6 +7,7 @@ import (
 	rotatelogs "github.com/lestrrat-go/file-rotatelogs"
 	"io"
 	"log"
+	"net/http"
 	"os"
 	"path/filepath"
 	"silu-notifier/server/config"
@@ -114,7 +115,8 @@ func (p *program) run() {
 	flag.Parse()
 	r := gin.Default()
 	r.Use(middleware.LoggerToFile())
-	r.Static("/resource", config.ResourcePath)
+	//r.Static("/resource", config.ResourcePath)
+	r.StaticFS("resource",http.Dir(config.ResourcePath))
 	r.POST("/sub", handler.Subscribe)
 	r.GET("/devices", handler.Devices)
 	r.POST("/pub", handler.Publishe)
