@@ -1,4 +1,40 @@
-## Server API Docs
+# 安装文档
+
+### windows
+
+#### 安装
+设置环境变量 `GEO_NOTIFY_SERVER_HOME`，指定数据文件存放的位置，例如`D:\geo_notify_server_data`
+
+点击右键我的电脑-> 属性-> 高级系统设置 -> 选择环境变量 -> 新建
+
+![1.jpg](./image/WX20200405-160207.png)
+
+![2.jpg](./image/WX20200405-160312.png)
+
+开始-> 运行-> cmd -> 打开终端命令行窗口,cd 切换到程序所在目录，输入
+
+```shell
+geo_notifier_server.exe install
+```
+
+打开windows 服务管理菜单，检查安装是否成功
+
+![3.jpg](./image/WX20200405-162259.png)
+
+#### 卸载
+
+开始-> 运行-> cmd -> 打开终端命令行窗口,cd 切换到程序所在目录，输入
+
+```shell
+geo_notifier_server.exe remove
+```
+
+#### 日志
+
+日志存放在用户自定义`GEO_NOTIFY_SERVER_HOME` 环境变量目录中的logs 目录下
+
+
+# Server API Docs
 
 ### 订阅事件 /sub
 
